@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>person</title>
+    <style>
+        .btn{
+            padding: 2px 5px; /* Отступы */
+            font-size: 14px; /* Размер шрифта */
+            border: none; /* Без границы */
+            border-radius: 4px; /* Скругление углов */
+            cursor: pointer; /* Указатель для курсора */
+            background-color: #007BFF; /* Один цвет для всех кнопок */
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<p th:text="${person.getFio() + ', ' + person.getYearOfBirth()}">value</p>
+
+<div th:if="${#lists.isEmpty(books)}">
+    <p>Человек пока не взял ни одной книги</p>
+</div>
+
+<div th:if="${!#lists.isEmpty(books)}">
+    <hr/>
+    <b>Книги:</b>
+    <div th:each="book : ${books}">
+        <p th:text="${book.getTitle() + ', ' + book.getAuthor() + ', ' + book.getYearOfManufacture()}">book</p>
+    </div>
+</div>
+
+<hr/>
+
+<button class="btn"><a style="color: white; text-decoration: none" th:href="@{/people/{id}/edit(id=${person.getPersonId()})}">Редактировать</a></button>
+<form th:method="DELETE" th:action="@{/people/{id}(id=${person.getPersonId()})}">
+    <input style="margin-top: 8px;" class="btn" type="submit" value="Удалить">
+</form>
+
+</body>
+</html>

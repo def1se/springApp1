@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>create book</title>
+    <style>
+        .btn{
+            padding: 2px 5px; /* Отступы */
+            font-size: 14px; /* Размер шрифта */
+            border: none; /* Без границы */
+            border-radius: 4px; /* Скругление углов */
+            cursor: pointer; /* Указатель для курсора */
+            background-color: #007BFF; /* Один цвет для всех кнопок */
+            color: white;
+        }
+        input[type="text"]{
+            margin-bottom: 8px;
+        }
+        input[type="submit"]{
+            text-decoration: none;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<form th:method="POST" th:action="@{/books/new}" th:object="${book}">
+    <label for="title">Введите название книги: </label>
+    <input type="text" id="title" th:field="*{title}"/>
+    <p style="color: red" th:if="${#fields.hasErrors('title')}" th:errors="*{title}">Title error</p>
+    <br>
+
+    <label for="author">Введите автора: </label>
+    <input type="text" id="author" th:field="*{author}"/>
+    <p style="color: red" th:if="${#fields.hasErrors('author')}" th:errors="*{author}">Author error</p>
+    <br>
+
+    <label for="year">Введите год: </label>
+    <input type="text" id="year" th:field="*{yearOfManufacture}" />
+    <p style="color: red" th:if="${#fields.hasErrors('yearOfManufacture')}" th:errors="*{yearOfManufacture}">Year error</p>
+    <br>
+
+    <input class="btn" type="submit" value="Создать!">
+</form>
+
+</body>
+</html>
