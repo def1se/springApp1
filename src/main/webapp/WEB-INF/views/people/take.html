@@ -27,14 +27,14 @@
     <hr/>
     <b>Книги:</b>
     <div th:each="book : ${books}">
-        <p th:text="${book.getTitle() + ', ' + book.getAuthor() + ', ' + book.getYearOfManufacture()}">book</p>
+        <p th:text="${book.getTitle() + ', ' + book.getAuthor() + ', ' + book.getYearOfManufacture()}" th:style="${book.getExpired()} ? 'color: red' : 'color: black'">book</p>
     </div>
 </div>
 
 <hr/>
 
-<button class="btn"><a style="color: white; text-decoration: none" th:href="@{/people/{id}/edit(id=${person.getPersonId()})}">Редактировать</a></button>
-<form th:method="DELETE" th:action="@{/people/{id}(id=${person.getPersonId()})}">
+<button class="btn"><a style="color: white; text-decoration: none" th:href="@{/people/{id}/edit(id=${person.getId()})}">Редактировать</a></button>
+<form th:method="DELETE" th:action="@{/people/{id}(id=${person.getId()})}">
     <input style="margin-top: 8px;" class="btn" type="submit" value="Удалить">
 </form>
 
