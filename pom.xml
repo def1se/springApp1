@@ -9,9 +9,8 @@
   <url>http://maven.apache.org</url>
 
   <properties>
-    <spring.version>
-      6.2.5
-    </spring.version>
+    <spring.version>6.1.6</spring.version>
+    <hibernate.version>6.4.4.Final</hibernate.version>
   </properties>
 
   <dependencies>
@@ -57,12 +56,31 @@
       <version>${spring.version}</version>
     </dependency>
 
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-orm</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.data</groupId>
+      <artifactId>spring-data-jpa</artifactId>
+      <version>3.2.0</version>
+    </dependency>
+
     <!-- https://mvnrepository.com/artifact/jakarta.servlet/jakarta.servlet-api -->
     <dependency>
       <groupId>jakarta.servlet</groupId>
       <artifactId>jakarta.servlet-api</artifactId>
-      <version>6.0.0</version>
+      <version>6.1.0</version>
       <scope>provided</scope>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/jakarta.persistence/jakarta.persistence-api -->
+    <dependency>
+      <groupId>jakarta.persistence</groupId>
+      <artifactId>jakarta.persistence-api</artifactId>
+      <version>3.1.0</version>
     </dependency>
 
     <!-- https://mvnrepository.com/artifact/org.thymeleaf/thymeleaf-spring6 -->
@@ -85,6 +103,15 @@
       <artifactId>hibernate-validator</artifactId>
       <version>8.0.2.Final</version>
     </dependency>
+
+
+    <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-core</artifactId>
+      <version>${hibernate.version}</version>
+    </dependency>
+
   </dependencies>
   <build>
     <finalName>project1</finalName>

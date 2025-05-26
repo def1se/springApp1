@@ -20,26 +20,26 @@
 <p th:text="${book.getTitle() + ', ' + book.getAuthor() + ', ' + book.getYearOfManufacture()}"></p>
 
 <form th:method="POST" th:action="@{/books/release}" th:if="${person != null}">
-    <input type="hidden" th:name="bookId" th:value="${book.getBookId()}"/>
+    <input type="hidden" th:name="bookId" th:value="${book.getId()}"/>
     <p th:text="'Книга сейчас у: ' + ${person.getFio()}"></p>
     <input class="btn" type="submit" value="Освободить книгу">
 </form>
 
 <form th:method="POST" th:action="@{/books/choose}" th:if="${person == null}">
-    <input type="hidden" th:name="bookId" th:value="${book.getBookId()}"/>
+    <input type="hidden" th:name="bookId" th:value="${book.getId()}"/>
 
     <p>Эта книга свободна. Кому ее назначить?</p>
     <label for="personSel">Выберите человека</label>
     <select id="personSel" th:name="personId">
-        <option th:each="person : ${people}" th:value="${person.personId}" th:text="${person.fio}"></option>
+        <option th:each="person : ${people}" th:value="${person.id}" th:text="${person.fio}"></option>
     </select>
     <input class="btn" type="submit" value="Назначить книгу"/>
 </form>
 
 <hr/>
-<button class="btn"><a style="color: white; text-decoration: none" th:href="@{/books/{id}/edit(id=${book.getBookId()})}">Редактировать</a></button>
+<button class="btn"><a style="color: white; text-decoration: none" th:href="@{/books/{id}/edit(id=${book.getId()})}">Редактировать</a></button>
 
-<form th:method="DELETE" th:action="@{/books/{id}(id=${book.getBookId()})}">
+<form th:method="DELETE" th:action="@{/books/{id}(id=${book.getId()})}">
     <input style="margin-top: 8px;" class="btn" type="submit" value="Удалить">
 </form>
 
